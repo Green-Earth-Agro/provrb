@@ -39,7 +39,7 @@ export function Solution() {
               Today companies say "we're sustainable."
             </span>
             <br />
-            <span className="text-provrb-primary">PROVRB asks: can you prove it?</span>
+            <span className="text-provrb-primary">PROVRB asks: can you prove{' '}it?</span>
           </h2>
         </div>
 

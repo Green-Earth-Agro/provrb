@@ -5,7 +5,7 @@ import { useEffect } from 'react'
  * carrying the attribute and adds `.is-visible` once it enters the viewport.
  * Unobserves after the first reveal so it never re-triggers on re-scroll.
  */
-export function useReveal(deps: ReadonlyArray<unknown> = []) {
+export function useReveal(deps: readonly unknown[] = []) {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('[data-reveal]')
 

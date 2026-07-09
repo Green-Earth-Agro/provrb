@@ -98,7 +98,9 @@ components:
 
 PROVRB is what a control room looks like when the thing under observation is a supply chain instead of a launch. The system reads as institutional infrastructure, not a startup's marketing site: forest-green establishes territorial authority (this is about land, canopy, and continuous watch), amber is rationed to the single act of taking action, and every shadow is tinted toward the brand rather than neutral black, so nothing feels borrowed from a generic UI kit. Precision is the load-bearing quality: crisp Barlow Condensed headings, a body font (Manrope) that reads like a well-typeset report, and interaction feedback (button lift, scroll-reveal, card lift) that confirms an action happened rather than performing for its own sake.
 
-The system explicitly rejects the sustainability-NGO register: no soft stock photography of nature or people, no earnest mission-statement visual tone as the primary voice, no WordPress-template softness. It also rejects generic SaaS-marketing tropes: no hero-metric-plus-gradient-text blocks, no identical icon-card grids repeated section after section, no decorative glassmorphism beyond the one functional instance (the nav shell's scroll blur). Marketing surfaces are pinned light — cream/sage, near-white paper — with the dark canopy-green palette reserved for the hero band, the contact section, and the footer, where it reads as a deliberate "this matters" register shift rather than the default theme. A parallel dark palette exists in the codebase for a staff-console product surface; it is out of scope for this page.
+The system explicitly rejects the sustainability-NGO register: no soft stock photography of nature or people, no earnest mission-statement visual tone as the primary voice, no WordPress-template softness. It also rejects generic SaaS-marketing tropes: no hero-metric-plus-gradient-text blocks, no identical icon-card grids repeated section after section, no decorative glassmorphism beyond the one functional instance (the nav shell's scroll blur). Marketing surfaces default to light — cream/sage, near-white paper — with the dark canopy-green palette reserved for the hero band, the contact section, and the footer, where it reads as a deliberate "this matters" register shift rather than the default theme.
+
+A manual light/dark theme toggle lives in the footer (no system-preference detection; light is always the default for new visitors). Toggling re-themes the light content sections (Problem, Solution, Technology, Why PROVRB, Markets, Why Luxembourg, About) using the dark-surface token overrides already defined in `index.css`. The hero, contact, and footer bands do **not** re-theme: they're a brand register shift, not a light-mode surface, so their background and on-dark text/button colors are pinned to fixed tokens (`--provrb-band-bg`, `--color-provrb-text-on-dark`, `--color-provrb-heading-on-dark`) rather than the reactive `--color-provrb-primary-*` / `--color-provrb-text-inverse` tokens. Anything placed on those bands must use the fixed tokens, not the reactive ones, or it will mis-pair when the toggle flips (the reactive tokens are tuned for a *different* always-dark surface, a staff-console product UI elsewhere in the codebase, not for these marketing bands).
 
 **Key Characteristics:**
 - Institutional, not startup-cute: forest green carries brand authority, amber is spent only on action.
@@ -173,7 +175,7 @@ The system is flat by default and treats shadows as a response to interaction, n
 - **Shape:** 8px radius (`rounded.sm`), consistent across all button variants — no other radius is used for buttons.
 - **Primary:** Amber Bright background, Canopy Ink text, weight 800, `14px 24px` padding. This is the only solid-fill button in the system.
 - **Hover / Focus:** background shifts to Signal Amber, `translateY(-1px)`, CTA Lift shadow fades in over 180ms with the system's custom ease-out (`cubic-bezier(0.23, 1, 0.32, 1)`). Active state: `scale(0.97)`.
-- **Secondary (outline):** transparent fill, 1px border at `rgba(255,255,255,0.28)`, Text Inverse label — used exclusively on dark sections (hero, contact) as the "quieter" of the two hero CTAs. Hover fills to `rgba(255,255,255,0.14)` and brightens the border to solid Text Inverse.
+- **Secondary (outline):** transparent fill, 1px border at `rgba(255,255,255,0.28)`, fixed Text-on-Dark label (not the reactive Text Inverse token — see the theme-toggle note in Overview) — used exclusively on dark sections (hero, contact) as the "quieter" of the two hero CTAs. Hover fills to `rgba(255,255,255,0.14)` and brightens the border to fixed Text-on-Dark.
 - **Icon button:** `0.5rem` padding, `0.5rem` (8px) radius, Deep Canopy icon color, hover background Sage Mist.
 
 ### Chips
@@ -199,10 +201,23 @@ The system is flat by default and treats shadows as a response to interaction, n
 - Directional variants: `left` / `right` (slide in from ±28px), `image` (heavier: 30px translate + 1.03 scale + 16px blur, for hero/media reveals), `line` (lighter: 18px translate only, for text lines).
 - Fully disabled under `prefers-reduced-motion: reduce` — elements render immediately visible, all durations collapse to 0ms.
 
+### Atmosphere Texture (signature component)
+- A code-native depth layer for the dark bands: fine SVG `feTurbulence` grain (white noise, ~5% alpha) plus a soft off-center radial glow (16% opacity, green on hero/footer, amber on contact). Absolutely positioned behind section content, zero image requests.
+- Never used on light sections — grain and glow are a dark-band-only device, part of the "this matters" register shift, not a general texture applied everywhere.
+
+### Icons
+- A bespoke line-icon set (1.6-1.8px stroke, consistent sizing) carries brand-specific marks: the orbit/satellite logo mark, the Why-PROVRB pulse/shield/globe/layers icons, the Luxembourg pin, the LinkedIn mark, checkmarks. These stay hand-drawn SVG.
+- **lucide-react** covers generic UI chrome only: nav hamburger/close (`Menu`/`X`), the hero scroll-cue chevron (`ChevronDown`), and the theme toggle (`Sun`/`Moon`). Don't reach for lucide for anything that carries brand meaning — that's the bespoke set's job.
+
+### Theme Toggle
+- A single icon button (Moon in light mode, Sun in dark mode) in the footer, next to the Privacy link. No system-preference detection; light is always the default for a first-time visitor. Choice persists to `localStorage` and is applied before paint via an inline script in `index.html` (no flash-of-wrong-theme).
+- Only re-themes the light content sections. See the theme-toggle note in Overview for why the hero/contact/footer bands are exempt.
+
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep marketing sections pinned light (Paper / Cloudless White / Sage Mist); reserve the dark Canopy Ink palette for the hero band, contact section, and footer only.
+- **Do** default marketing sections to light (Paper / Cloudless White / Sage Mist); reserve the dark Canopy Ink palette for the hero band, contact section, and footer regardless of the light/dark toggle state.
+- **Do** use the fixed on-dark tokens (`--provrb-band-bg`, `--color-provrb-text-on-dark`, `--color-provrb-heading-on-dark`) for anything placed on the hero/contact/footer bands. Never the reactive `--color-provrb-primary-*` or `--color-provrb-text-inverse` tokens there — those are tuned for the separate staff-console dark surface and mis-pair on these bands once the toggle flips.
 - **Do** tint every shadow toward the brand hue — green `rgba(42,58,42,…)` by default, amber `rgba(80,58,10,…)` only on the primary CTA's hover state. Never a neutral black shadow.
 - **Do** use the `[data-reveal]` scroll system for section entrances rather than introducing a new animation utility or library.
 - **Do** hold buttons at 8px radius and chips/pills at 999px — no in-between radius values anywhere in the system.

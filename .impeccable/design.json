@@ -101,7 +101,8 @@
       { "name": "The Flat-at-Rest Rule", "body": "Nothing casts a shadow just for sitting on the page. A shadow present at rest means the element reads as a physical document floating above the page; a shadow that only appears on hover means the element is interactive.", "section": "elevation" }
     ],
     "dos": [
-      "Do keep marketing sections pinned light (Paper / Cloudless White / Sage Mist); reserve the dark Canopy Ink palette for the hero band, contact section, and footer only.",
+      "Do default marketing sections to light (Paper / Cloudless White / Sage Mist); reserve the dark Canopy Ink palette for the hero band, contact section, and footer regardless of the light/dark toggle state.",
+      "Do use the fixed on-dark tokens (--provrb-band-bg, --color-provrb-text-on-dark, --color-provrb-heading-on-dark) for anything on the hero/contact/footer bands, never the reactive --color-provrb-primary-* or --color-provrb-text-inverse tokens there.",
       "Do tint every shadow toward the brand hue — green by default, amber only on the primary CTA's hover state. Never a neutral black shadow.",
       "Do use the [data-reveal] scroll system for section entrances rather than introducing a new animation utility or library.",
       "Do hold buttons at 8px radius and chips/pills at 999px — no in-between radius values anywhere in the system.",

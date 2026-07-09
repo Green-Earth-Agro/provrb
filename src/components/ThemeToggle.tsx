@@ -22,7 +22,7 @@ export function ThemeToggle() {
       onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
       aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
       aria-pressed={theme === 'dark'}
-      className="inline-flex items-center justify-center rounded-lg p-2 transition-colors duration-150 hover:bg-white/10"
+      className="relative inline-flex items-center justify-center rounded-lg p-2 transition-colors duration-150 before:absolute before:inset-[-6px] before:content-[''] hover:bg-white/10"
       style={{ color: 'var(--provrb-footer-text)' }}
     >
       {theme === 'light' ? <Moon size={17} strokeWidth={1.8} /> : <Sun size={17} strokeWidth={1.8} />}

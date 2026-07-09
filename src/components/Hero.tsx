@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react'
+import { AtmosphereTexture } from './AtmosphereTexture'
 import { HeroIllustration } from './HeroIllustration'
 
 const PROOF_POINTS = ['EUDR ready', 'Sentinel-1 · Sentinel-2', 'ESA-backed technology']
@@ -23,10 +24,10 @@ export function Hero() {
         <rect width="100%" height="100%" fill="url(#provrb-grid)" />
       </svg>
 
+      <AtmosphereTexture glow="green" />
+
       <div className="provrb-container relative grid gap-14 py-16 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
         <div data-reveal="left">
-          {/* <span className="provrb-proof-chip">Now onboarding early access partners — EUDR 2025</span> */}
-
           <h1
             className="mt-6 font-[var(--font-provrb-heading)] font-semibold tracking-tight"
             style={{

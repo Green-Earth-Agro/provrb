@@ -39,9 +39,9 @@ export function Markets() {
               key={market.name}
               data-reveal="line"
               style={{ ['--reveal-delay' as string]: `${i * 90}ms` }}
-              className="flex flex-col gap-3 border-b py-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+              className="flex flex-col gap-3 border-b py-8 sm:flex-row sm:items-start sm:justify-between sm:gap-8"
             >
-              <div className="sm:w-[15ch] sm:shrink-0">
+              <div className="sm:w-[22ch] sm:shrink-0">
                 <h3
                   className="font-[var(--font-provrb-heading)] text-[1.5rem] font-semibold text-provrb-primary"
                 >

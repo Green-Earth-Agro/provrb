@@ -253,10 +253,15 @@
   h1, h2 {
     font-family: var(--font-provrb-heading);
     letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
   h3, h4, h5, h6 {
     font-family: var(--font-provrb-sans);
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   /* ── Utility aliases ── */
@@ -337,11 +342,20 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: var(--color-provrb-primary-a10);
+    position: relative;
     transition:
       transform 160ms var(--provrb-ease-out),
       background-color 150ms ease,
       color 150ms ease;
     will-change: transform;
+  }
+
+  /* Expands the tap target to the 44px minimum without growing the visual
+     icon or its padding (spatial-design.md: pad the hit area, not the mark). */
+  .btn-icon::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
   }
 
   .btn-icon:hover {

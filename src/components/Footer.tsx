@@ -1,3 +1,4 @@
+import { AtmosphereTexture } from './AtmosphereTexture'
 import { ThemeToggle } from './ThemeToggle'
 
 function LinkedInIcon() {
@@ -15,8 +16,12 @@ const YEAR = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <footer style={{ background: 'var(--provrb-footer-bg)', color: 'var(--provrb-footer-text)' }}>
-      <div className="provrb-container flex flex-col gap-8 py-14 sm:flex-row sm:items-start sm:justify-between">
+    <footer
+      className="relative overflow-hidden"
+      style={{ background: 'var(--provrb-footer-bg)', color: 'var(--provrb-footer-text)' }}
+    >
+      <AtmosphereTexture glow="green" />
+      <div className="provrb-container relative flex flex-col gap-8 py-14 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p
             className="font-[var(--font-provrb-heading)] text-[1.15rem] font-semibold"

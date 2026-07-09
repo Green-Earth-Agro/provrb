@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { AtmosphereTexture } from './AtmosphereTexture'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -22,14 +23,19 @@ export function Contact() {
   const [status, setStatus] = useState<Status>('idle')
   const [errors, setErrors] = useState<Errors>({})
 
+  function fieldValue(form: FormData, key: string): string {
+    const value = form.get(key)
+    return typeof value === 'string' ? value : ''
+  }
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = new FormData(e.currentTarget)
     const data = {
-      name: String(form.get('name') ?? ''),
-      email: String(form.get('email') ?? ''),
-      company: String(form.get('company') ?? ''),
-      message: String(form.get('message') ?? ''),
+      name: fieldValue(form, 'name'),
+      email: fieldValue(form, 'email'),
+      company: fieldValue(form, 'company'),
+      message: fieldValue(form, 'message'),
     }
 
     const nextErrors = validate(data)
@@ -37,17 +43,30 @@ export function Contact() {
     if (Object.keys(nextErrors).length > 0) return
 
     setStatus('submitting')
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 900))
-      setStatus('success')
-    } catch {
+    const { supabase } = await import('../lib/supabase')
+    const { error } = await supabase.from('contact_submissions').insert({
+      name: data.name.trim(),
+      email: data.email.trim(),
+      company: data.company.trim(),
+      message: data.message.trim() || null,
+    })
+
+    if (error) {
       setStatus('error')
+      return
     }
+
+    setStatus('success')
   }
 
   return (
-    <section id="contact" className="py-24 sm:py-28" style={{ background: 'var(--provrb-band-bg)' }}>
-      <div className="provrb-container grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
+    <section
+      id="contact"
+      className="relative overflow-hidden py-24 sm:py-28"
+      style={{ background: 'var(--provrb-band-bg)' }}
+    >
+      <AtmosphereTexture glow="gold" />
+      <div className="provrb-container relative grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
         <div data-reveal="left">
           <p className="provrb-eyebrow provrb-eyebrow-on-dark">Request early access</p>
           <h2
@@ -95,7 +114,7 @@ export function Contact() {
           ) : (
             <form
               noValidate
-              onSubmit={handleSubmit}
+              onSubmit={(e) => void handleSubmit(e)}
               className="rounded-lg p-7 sm:p-8"
               style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
             >
