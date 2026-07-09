@@ -96,8 +96,8 @@
   --color-provrb-info-a20: oklch(81% 0.1 240);
 
   /* --- Typography --- */
-  --font-provrb-sans: 'Manrope', system-ui, sans-serif;
-  --font-provrb-heading: 'Barlow Condensed', system-ui, sans-serif;
+  --font-provrb-sans: 'Source Sans 3', system-ui, sans-serif;
+  --font-provrb-heading: 'Big Shoulders', system-ui, sans-serif;
   --font-provrb-mono: ui-monospace, monospace;
 
   --text-provrb-xs: 0.75rem;

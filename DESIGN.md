@@ -29,29 +29,29 @@ colors:
   verified-green: "#1DC767"
 typography:
   display:
-    fontFamily: "Barlow Condensed, system-ui, sans-serif"
+    fontFamily: "Big Shoulders, system-ui, sans-serif"
     fontSize: "clamp(2.75rem, 1.75rem + 5vw, 4.75rem)"
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: "-0.01em"
   headline:
-    fontFamily: "Barlow Condensed, system-ui, sans-serif"
+    fontFamily: "Big Shoulders, system-ui, sans-serif"
     fontSize: "clamp(2rem, 1.4rem + 3vw, 3rem)"
     fontWeight: 600
     lineHeight: 1.1
     letterSpacing: "-0.01em"
   title:
-    fontFamily: "Manrope, system-ui, sans-serif"
+    fontFamily: "Source Sans 3, system-ui, sans-serif"
     fontSize: "1.25rem"
     fontWeight: 700
     lineHeight: 1.3
   body:
-    fontFamily: "Manrope, system-ui, sans-serif"
+    fontFamily: "Source Sans 3, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
   label:
-    fontFamily: "Manrope, system-ui, sans-serif"
+    fontFamily: "Source Sans 3, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 700
     letterSpacing: "0.01em"
@@ -96,7 +96,7 @@ components:
 
 **Creative North Star: "The Compliance Observatory"**
 
-PROVRB is what a control room looks like when the thing under observation is a supply chain instead of a launch. The system reads as institutional infrastructure, not a startup's marketing site: forest-green establishes territorial authority (this is about land, canopy, and continuous watch), amber is rationed to the single act of taking action, and every shadow is tinted toward the brand rather than neutral black, so nothing feels borrowed from a generic UI kit. Precision is the load-bearing quality: crisp Barlow Condensed headings, a body font (Manrope) that reads like a well-typeset report, and interaction feedback (button lift, scroll-reveal, card lift) that confirms an action happened rather than performing for its own sake.
+PROVRB is what a control room looks like when the thing under observation is a supply chain instead of a launch. The system reads as institutional infrastructure, not a startup's marketing site: forest-green establishes territorial authority (this is about land, canopy, and continuous watch), amber is rationed to the single act of taking action, and every shadow is tinted toward the brand rather than neutral black, so nothing feels borrowed from a generic UI kit. Precision is the load-bearing quality: crisp Big Shoulders headings, a body font (Source Sans 3) that reads like a well-typeset report, and interaction feedback (button lift, scroll-reveal, card lift) that confirms an action happened rather than performing for its own sake.
 
 The system explicitly rejects the sustainability-NGO register: no soft stock photography of nature or people, no earnest mission-statement visual tone as the primary voice, no WordPress-template softness. It also rejects generic SaaS-marketing tropes: no hero-metric-plus-gradient-text blocks, no identical icon-card grids repeated section after section, no decorative glassmorphism beyond the one functional instance (the nav shell's scroll blur). Marketing surfaces default to light — cream/sage, near-white paper — with the dark canopy-green palette reserved for the hero band, the contact section, and the footer, where it reads as a deliberate "this matters" register shift rather than the default theme.
 
@@ -140,21 +140,21 @@ A restrained palette: one authority color (Deep Canopy green), one action color 
 
 ## 3. Typography
 
-**Display Font:** Barlow Condensed (with system-ui, sans-serif fallback)
-**Body Font:** Manrope (with system-ui, sans-serif fallback)
+**Display Font:** Big Shoulders (with system-ui, sans-serif fallback)
+**Body Font:** Source Sans 3 (with system-ui, sans-serif fallback)
 **Label/Mono Font:** ui-monospace stack (reserved; not yet used in any shipped component — candidate for dashboard-mockup data readouts)
 
-**Character:** Barlow Condensed's tight, condensed forms carry the authority of a headline built for a control-room display; Manrope's warmth and even weight keep the surrounding report-like body copy readable and human. The pairing is deliberately not a typical SaaS geometric-sans-on-geometric-sans stack.
+**Character:** Big Shoulders' tall, condensed forms carry the authority of civic signage, a headline built for a control-room display; Source Sans 3's refined, even letterforms keep the surrounding report-like body copy precise and easy to scan at length. The pairing leans on genuine proportion contrast (condensed display against a normal-width, humanist body) rather than the typical SaaS geometric-sans-on-geometric-sans stack.
 
 ### Hierarchy
 - **Display** (600, `clamp(2.75rem, 1.75rem + 5vw, 4.75rem)`, 1.05 line-height, -0.01em tracking): hero H1 only. Extends the existing `--text-provrb-*` scale, which currently tops out at 3xl (30px) — add this step to the `@theme` block at implementation time rather than hardcoding it inline.
 - **Headline** (600, `clamp(2rem, 1.4rem + 3vw, 3rem)`, 1.1 line-height, -0.01em tracking): section H2s (Problem, Solution, Technology, Markets, About). Same scale-extension note as Display.
-- **Title** (700, 1.25rem / `--text-provrb-xl`, 1.3 line-height): card headers, H3–H6 (Manrope, not Barlow Condensed — the heading font is reserved for H1/H2 only per `index.css`).
+- **Title** (700, 1.25rem / `--text-provrb-xl`, 1.3 line-height): card headers, H3–H6 (Source Sans 3, not Big Shoulders — the heading font is reserved for H1/H2 only per `index.css`).
 - **Body** (400, 1rem / `--text-provrb-base`, 1.6 line-height): paragraph copy. Cap measure at 65–75ch; the current tokens don't set this, enforce it at the container level.
 - **Label** (700, 0.875rem / `--text-provrb-sm`, 0.01em tracking): eyebrows ("THE PROBLEM"), nav links, chip text. The proof-chip component uses a one-off 0.9rem/700/0.01em — close enough to Label that it should be folded into this token rather than kept as a hardcoded exception.
 
 ### Named Rules
-**The Two-Voice Rule.** Barlow Condensed appears only on H1/H2. Manrope carries everything else, including H3–H6. Never mix the two within a single text block, and never use Barlow Condensed for body copy — it's a headline instrument, not a reading font.
+**The Two-Voice Rule.** Big Shoulders appears only on H1/H2. Source Sans 3 carries everything else, including H3–H6. Never mix the two within a single text block, and never use Big Shoulders for body copy — it's a headline instrument, not a reading font.
 
 ## 4. Elevation
 
