@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-09T00:00:00Z",
+  "title": "Design System: PROVRB",
+  "extensions": {
+    "colorMeta": {
+      "canopy-ink": { "role": "primary", "displayName": "Canopy Ink", "canonical": "oklch(27% 0.09 146)", "tonalRamp": ["oklch(27% 0.09 146)", "oklch(34% 0.094 146)", "oklch(43% 0.088 146)", "oklch(50% 0.092 131)", "oklch(66% 0.078 131)", "oklch(83% 0.05 131)"] },
+      "canopy": { "role": "primary", "displayName": "Deep Canopy", "canonical": "oklch(34% 0.094 146)", "tonalRamp": ["oklch(27% 0.09 146)", "oklch(34% 0.094 146)", "oklch(43% 0.088 146)", "oklch(50% 0.092 131)", "oklch(66% 0.078 131)", "oklch(83% 0.05 131)"] },
+      "canopy-mid": { "role": "primary", "displayName": "Canopy Mid", "canonical": "oklch(43% 0.088 146)", "tonalRamp": ["oklch(27% 0.09 146)", "oklch(34% 0.094 146)", "oklch(43% 0.088 146)", "oklch(50% 0.092 131)", "oklch(66% 0.078 131)", "oklch(83% 0.05 131)"] },
+      "amber-ink": { "role": "secondary", "displayName": "Amber Ink", "canonical": "oklch(53% 0.115 65)", "tonalRamp": ["oklch(53% 0.115 65)", "oklch(63% 0.128 66)", "oklch(79% 0.148 84)", "oklch(84% 0.13 86)", "oklch(90% 0.09 87)", "oklch(96% 0.04 93)"] },
+      "signal-amber": { "role": "secondary", "displayName": "Signal Amber", "canonical": "oklch(63% 0.128 66)", "tonalRamp": ["oklch(53% 0.115 65)", "oklch(63% 0.128 66)", "oklch(79% 0.148 84)", "oklch(84% 0.13 86)", "oklch(90% 0.09 87)", "oklch(96% 0.04 93)"] },
+      "amber-bright": { "role": "secondary", "displayName": "Amber Bright", "canonical": "oklch(79% 0.148 84)", "tonalRamp": ["oklch(53% 0.115 65)", "oklch(63% 0.128 66)", "oklch(79% 0.148 84)", "oklch(84% 0.13 86)", "oklch(90% 0.09 87)", "oklch(96% 0.04 93)"] },
+      "orbital-slate": { "role": "tertiary", "displayName": "Orbital Slate", "canonical": "oklch(20% 0.03 264)", "tonalRamp": ["oklch(13% 0.02 264)", "oklch(20% 0.03 264)", "oklch(30% 0.04 264)", "oklch(40% 0.05 264)", "oklch(51% 0.06 264)", "oklch(64% 0.05 264)"] },
+      "cloudless-white": { "role": "neutral", "displayName": "Cloudless White", "canonical": "oklch(99.5% 0.004 130)", "tonalRamp": ["oklch(99.5% 0.004 130)", "oklch(98.5% 0.007 130)", "oklch(95% 0.019 130)", "oklch(91% 0.02 107)", "oklch(87% 0.028 131)", "oklch(80% 0.034 131)"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "oklch(98.5% 0.007 130)", "tonalRamp": ["oklch(99.5% 0.004 130)", "oklch(98.5% 0.007 130)", "oklch(95% 0.019 130)", "oklch(91% 0.02 107)", "oklch(87% 0.028 131)", "oklch(80% 0.034 131)"] },
+      "sage-mist": { "role": "neutral", "displayName": "Sage Mist", "canonical": "oklch(95% 0.019 130)", "tonalRamp": ["oklch(99.5% 0.004 130)", "oklch(98.5% 0.007 130)", "oklch(95% 0.019 130)", "oklch(91% 0.02 107)", "oklch(87% 0.028 131)", "oklch(80% 0.034 131)"] },
+      "sage": { "role": "neutral", "displayName": "Sage", "canonical": "oklch(91% 0.02 107)", "tonalRamp": ["oklch(99.5% 0.004 130)", "oklch(98.5% 0.007 130)", "oklch(95% 0.019 130)", "oklch(91% 0.02 107)", "oklch(87% 0.028 131)", "oklch(80% 0.034 131)"] },
+      "sage-shadow": { "role": "neutral", "displayName": "Sage Shadow", "canonical": "oklch(80% 0.034 131)", "tonalRamp": ["oklch(99.5% 0.004 130)", "oklch(98.5% 0.007 130)", "oklch(95% 0.019 130)", "oklch(91% 0.02 107)", "oklch(87% 0.028 131)", "oklch(80% 0.034 131)"] },
+      "verified-green": { "role": "accent", "displayName": "Verified Green", "canonical": "rgb(29, 199, 103)", "tonalRamp": ["#0f4d29", "#146b38", "#1a9049", "#1dc767", "#5ddb92", "#a6ecc4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only. Extends the --text-provrb-* scale, which currently tops at 3xl — add this step at implementation." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s (Problem, Solution, Technology, Markets, About)." },
+      "title": { "displayName": "Title", "purpose": "Card headers and H3-H6, always Manrope, never Barlow Condensed." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy. Cap measure at 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, nav links, chip text, uppercase-eligible." }
+    },
+    "shadows": [
+      { "name": "ambient-card", "value": "0 16px 30px rgba(42, 58, 42, 0.07)", "purpose": "Resting shadow for panels meant to read as elevated documents (dashboard mockups, report cards)." },
+      { "name": "ambient-image", "value": "0 18px 36px rgba(42, 58, 42, 0.10)", "purpose": "Heavier resting shadow for hero/media illustrations." },
+      { "name": "card-lift", "value": "0 24px 40px rgba(42, 58, 42, 0.12)", "purpose": "Hover escalation for .provrb-card-lift, paired with translateY(-4px)." },
+      { "name": "cta-lift", "value": "0 14px 28px rgba(80, 58, 10, 0.14)", "purpose": "Amber-tinted hover shadow exclusive to the primary button." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default exponential ease-out for reveals, lifts, and button feedback." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Symmetric easing, used sparingly (float animation companion curve)." },
+      { "name": "ease-drawer", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Reserved for drawer/sheet-style transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid amber CTA. The only fully-filled button in the system; used once or twice per section, never repeated as a grid of equal-weight actions.",
+      "html": "<button class=\"ds-btn-primary\">Request Early Access</button>",
+      "css": ".ds-btn-primary { background-color: oklch(79% 0.148 84); color: oklch(27% 0.09 146); font-weight: 800; font-size: 15px; padding: 14px 24px; border-radius: 8px; border: none; display: inline-block; transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 180ms ease, box-shadow 180ms ease; } .ds-btn-primary:hover { background-color: oklch(63% 0.128 66); transform: translateY(-1px); box-shadow: 0 14px 28px rgba(80, 58, 10, 0.14); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(63% 0.128 66); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline button for dark sections (hero, contact) — the quieter of a paired CTA.",
+      "html": "<button class=\"ds-btn-secondary\">See How It Works</button>",
+      "css": ".ds-btn-secondary { background-color: transparent; color: oklch(98.5% 0.005 146); font-weight: 800; font-size: 15px; padding: 14px 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.28); display: inline-block; transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 180ms ease, border-color 180ms ease; } .ds-btn-secondary:hover { background-color: rgba(255,255,255,0.14); border-color: oklch(98.5% 0.005 146); transform: translateY(-1px); } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(98.5% 0.005 146); outline-offset: 2px; }"
+    },
+    {
+      "name": "Proof Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Informational pill for dark-surface proof points and live-status badges. Not interactive.",
+      "html": "<span class=\"ds-chip\">EUDR ready</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; min-height: 44px; border-radius: 999px; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: oklch(92% 0.012 146); font-size: 0.875rem; font-weight: 700; line-height: 1.2; letter-spacing: 0.01em; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Primary navigation link with an animated amber underline that scales in from 35% width on hover/focus.",
+      "html": "<a href=\"#solution\" class=\"ds-nav-link\">Solution</a>",
+      "css": ".ds-nav-link { position: relative; color: oklch(27% 0.038 146); text-decoration: none; transition: color 180ms ease, opacity 180ms ease; } .ds-nav-link::after { content: \"\"; position: absolute; left: 0; bottom: -0.45rem; width: 100%; height: 2px; border-radius: 999px; background: oklch(63% 0.128 66); transform: scaleX(0.35); transform-origin: left center; opacity: 0; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), opacity 220ms ease; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: oklch(34% 0.094 146); } .ds-nav-link:hover::after, .ds-nav-link:focus-visible::after { transform: scaleX(1); opacity: 1; }"
+    },
+    {
+      "name": "Elevated Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat-at-rest content card that lifts and gains a green-tinted shadow on hover. The default card pattern for Problem/Why-PROVRB/Markets sections.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Continuous Monitoring</h3><p class=\"ds-card-body\">Not annual inspections. Every parcel, observed on a rolling cadence.</p></div>",
+      "css": ".ds-card { background: oklch(99.5% 0.004 130); border: 1px solid oklch(91% 0.02 107); border-radius: 8px; padding: 24px; transition: transform 240ms cubic-bezier(0.23,1,0.32,1), box-shadow 240ms ease, border-color 240ms ease; } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 24px 40px rgba(42, 58, 42, 0.12); } .ds-card-title { font-family: 'Manrope', system-ui, sans-serif; font-weight: 700; font-size: 1.25rem; color: oklch(19% 0.042 146); margin: 0 0 8px; } .ds-card-body { font-family: 'Manrope', system-ui, sans-serif; font-size: 1rem; line-height: 1.6; color: oklch(44% 0.025 153); margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Compliance Observatory",
+    "overview": "PROVRB is what a control room looks like when the thing under observation is a supply chain instead of a launch. The system reads as institutional infrastructure, not a startup's marketing site: forest-green establishes territorial authority (this is about land, canopy, and continuous watch), amber is rationed to the single act of taking action, and every shadow is tinted toward the brand rather than neutral black, so nothing feels borrowed from a generic UI kit. Precision is the load-bearing quality: crisp Barlow Condensed headings, a body font (Manrope) that reads like a well-typeset report, and interaction feedback (button lift, scroll-reveal, card lift) that confirms an action happened rather than performing for its own sake. The system explicitly rejects the sustainability-NGO register: no soft stock photography of nature or people, no earnest mission-statement visual tone as the primary voice, no WordPress-template softness. It also rejects generic SaaS-marketing tropes: no hero-metric-plus-gradient-text blocks, no identical icon-card grids repeated section after section, no decorative glassmorphism beyond the one functional instance (the nav shell's scroll blur). Marketing surfaces are pinned light, with the dark canopy-green palette reserved for the hero band, the contact section, and the footer, where it reads as a deliberate register shift rather than the default theme.",
+    "keyCharacteristics": [
+      "Institutional, not startup-cute: forest green carries brand authority, amber is spent only on action.",
+      "Evidence-tinted shadows: every shadow uses the brand's green or amber, never neutral black.",
+      "Flat at rest, alive on interaction: cards, buttons, and media only lift, brighten, or reveal in response to hover/scroll.",
+      "Light-pinned marketing, dark-banded moments: the page is light by default; canopy-dark sections are a deliberate register shift, not a mode toggle."
+    ],
+    "rules": [
+      { "name": "The Amber Reserve Rule", "body": "Signal Amber and Amber Bright are the only colors used for calls-to-action, links, and interactive underlines. They never fill a section background or serve as decoration.", "section": "colors" },
+      { "name": "The Tinted Shadow Rule", "body": "No shadow in this system uses neutral black. Card and button shadows are always green-tinted rgba(42,58,42,…), or amber-tinted rgba(80,58,10,…) on the primary CTA's hover state only.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Barlow Condensed appears only on H1/H2. Manrope carries everything else, including H3-H6. Never mix the two within a single text block.", "section": "typography" },
+      { "name": "The Flat-at-Rest Rule", "body": "Nothing casts a shadow just for sitting on the page. A shadow present at rest means the element reads as a physical document floating above the page; a shadow that only appears on hover means the element is interactive.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep marketing sections pinned light (Paper / Cloudless White / Sage Mist); reserve the dark Canopy Ink palette for the hero band, contact section, and footer only.",
+      "Do tint every shadow toward the brand hue — green by default, amber only on the primary CTA's hover state. Never a neutral black shadow.",
+      "Do use the [data-reveal] scroll system for section entrances rather than introducing a new animation utility or library.",
+      "Do hold buttons at 8px radius and chips/pills at 999px — no in-between radius values anywhere in the system.",
+      "Do use abstract satellite imagery, world maps, orbit lines, and compliance-dashboard mockups as the system's visual language."
+    ],
+    "donts": [
+      "Don't use stock photography of nature, farms, or people — PROVRB reads as deep-tech infrastructure, not a sustainability consultancy or NGO.",
+      "Don't use gradient text, hero-metric-plus-stat-row blocks, or identical icon-card grids.",
+      "Don't use border-left/border-right colored stripes as a status or category accent on any card, list item, or alert.",
+      "Don't apply glassmorphism decoratively. The nav shell's scroll blur is the one sanctioned instance.",
+      "Don't let a card or panel carry a shadow at rest unless it's meant to read as a physical floating document."
+    ]
+  }
+}

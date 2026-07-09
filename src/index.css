@@ -1,0 +1,656 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+/* ─── Global semantic variables ────────────────────────────────────────────── */
+:root {
+  --provrb-bg: oklch(98.5% 0.007 130);
+  --provrb-text: oklch(19% 0.042 146);
+  --provrb-surface: oklch(95% 0.019 130);
+  --provrb-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --provrb-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --provrb-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Footer */
+  --provrb-footer-bg: oklch(16% 0.048 146);
+  --provrb-footer-text: oklch(80% 0.025 146);
+
+  /* Dark band background — hero + contact. Fixed regardless of theme toggle;
+     these bands are a brand register shift (see DESIGN.md), not a dark-mode
+     surface, so they must not inherit the reactive --color-provrb-primary-a0
+     value once that token gets redefined for dark theme. */
+  --provrb-band-bg: oklch(27% 0.09 146);
+
+  /* Overlays — used on sections that are always dark-green regardless of mode */
+  --provrb-hero-overlay: rgb(29, 199, 103);
+  --provrb-overlay-pill-bg: rgba(255, 255, 255, 0.14);
+  --provrb-overlay-pill-border: rgba(255, 255, 255, 0.28);
+  --provrb-card-overlay-bg: rgba(255, 255, 255, 0.07);
+  --provrb-card-overlay-border: rgba(255, 255, 255, 0.15);
+
+  /* Shadows */
+  --provrb-shadow-card: 0 16px 30px rgba(42, 58, 42, 0.07);
+  --provrb-shadow-image: 0 18px 36px rgba(42, 58, 42, 0.10);
+}
+
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+@theme {
+  /* --- Primary (Forest Green Brand) --- */
+  --color-provrb-primary-a0: oklch(27% 0.09 146);
+  --color-provrb-primary-a10: oklch(34% 0.094 146);
+  --color-provrb-primary-a20: oklch(43% 0.088 146);
+  --color-provrb-primary-a30: oklch(50% 0.092 131);
+  --color-provrb-primary-a40: oklch(66% 0.078 131);
+  --color-provrb-primary-a50: oklch(83% 0.05 131);
+
+  /* --- Gold/Amber (CTA Accent) --- */
+  --color-provrb-gold-a0: oklch(53% 0.115 65);
+  --color-provrb-gold-a10: oklch(63% 0.128 66);
+  --color-provrb-gold-a20: oklch(79% 0.148 84);
+  --color-provrb-gold-a30: oklch(84% 0.13 86);
+  --color-provrb-gold-a40: oklch(90% 0.09 87);
+  --color-provrb-gold-a50: oklch(96% 0.04 93);
+
+  /* --- Secondary (Neutral Slate) --- */
+  --color-provrb-secondary-a0: oklch(13% 0.02 264);
+  --color-provrb-secondary-a10: oklch(20% 0.03 264);
+  --color-provrb-secondary-a20: oklch(30% 0.04 264);
+  --color-provrb-secondary-a30: oklch(40% 0.05 264);
+  --color-provrb-secondary-a40: oklch(51% 0.06 264);
+  --color-provrb-secondary-a50: oklch(64% 0.05 264);
+
+  /* --- Surface (Cream / Sage palette — adapts in dark mode) --- */
+  --color-provrb-surface-a0: oklch(99.5% 0.004 130);
+  --color-provrb-surface-a10: oklch(98.5% 0.007 130);
+  --color-provrb-surface-a20: oklch(95% 0.019 130);
+  --color-provrb-surface-a30: oklch(91% 0.02 107);
+  --color-provrb-surface-a40: oklch(87% 0.028 131);
+  --color-provrb-surface-a50: oklch(80% 0.034 131);
+
+  /* --- Text Tokens --- */
+  --color-provrb-text-primary: oklch(19% 0.042 146);
+  --color-provrb-text-secondary: oklch(27% 0.038 146);
+  --color-provrb-text-muted: oklch(44% 0.025 153);
+  --color-provrb-text-disabled: oklch(64% 0.012 264);
+  --color-provrb-text-inverse: oklch(98.5% 0.005 146);
+
+  /* Text on always-dark-green sections (hero, contact) */
+  --color-provrb-text-on-dark: oklch(92% 0.012 146);
+  --color-provrb-heading-on-dark: oklch(98% 0.008 146);
+
+  /* --- Semantic State Colors --- */
+  --color-provrb-success-a0: oklch(32% 0.09 157);
+  --color-provrb-success-a10: oklch(62% 0.17 151);
+  --color-provrb-success-a20: oklch(83% 0.11 151);
+
+  --color-provrb-warning-a0: oklch(43% 0.1 62);
+  --color-provrb-warning-a10: oklch(74% 0.15 80);
+  --color-provrb-warning-a20: oklch(92% 0.1 92);
+
+  --color-provrb-danger-a0: oklch(27% 0.09 22);
+  --color-provrb-danger-a10: oklch(52% 0.2 22);
+  --color-provrb-danger-a20: oklch(80% 0.12 22);
+
+  --color-provrb-info-a0: oklch(26% 0.1 265);
+  --color-provrb-info-a10: oklch(56% 0.19 264);
+  --color-provrb-info-a20: oklch(81% 0.1 240);
+
+  /* --- Typography --- */
+  --font-provrb-sans: 'Manrope', system-ui, sans-serif;
+  --font-provrb-heading: 'Barlow Condensed', system-ui, sans-serif;
+  --font-provrb-mono: ui-monospace, monospace;
+
+  --text-provrb-xs: 0.75rem;
+  --text-provrb-sm: 0.875rem;
+  --text-provrb-base: 1rem;
+  --text-provrb-lg: 1.125rem;
+  --text-provrb-xl: 1.25rem;
+  --text-provrb-2xl: 1.5rem;
+  --text-provrb-3xl: 1.875rem;
+  /* Display/headline steps extend the scale for hero and section headers
+     (DESIGN.md § Typography flags these as not-yet-tokenized). */
+  --text-provrb-headline: clamp(2rem, 1.4rem + 3vw, 3rem);
+  --text-provrb-display: clamp(2.75rem, 1.75rem + 5vw, 4.75rem);
+
+  --spacing-provrb-xs: 0.25rem;
+  --spacing-provrb-sm: 0.5rem;
+  --spacing-provrb-md: 1rem;
+  --spacing-provrb-lg: 1.5rem;
+  --spacing-provrb-xl: 2rem;
+  --spacing-provrb-2xl: 3rem;
+}
+
+/* ─── Dark mode — system preference ────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --provrb-bg: oklch(14% 0.015 146);
+    --provrb-text: oklch(90% 0.012 146);
+    --provrb-surface: oklch(20% 0.02 146);
+
+    --color-provrb-surface-a0: oklch(14% 0.015 146);
+    --color-provrb-surface-a10: oklch(20% 0.02 146);
+    --color-provrb-surface-a20: oklch(27% 0.025 146);
+    --color-provrb-surface-a30: oklch(36% 0.022 146);
+    --color-provrb-surface-a40: oklch(47% 0.018 146);
+    --color-provrb-surface-a50: oklch(58% 0.014 146);
+
+    --color-provrb-text-primary: oklch(90% 0.012 146);
+    --color-provrb-text-secondary: oklch(80% 0.015 146);
+    --color-provrb-text-muted: oklch(64% 0.012 155);
+    --color-provrb-text-disabled: oklch(51% 0.006 264);
+    --color-provrb-text-inverse: oklch(13% 0.02 264);
+
+    /* ── Accent palettes for dark surfaces (staff console only; marketing is pinned light) ──
+       Primary is a SOLID FILL (button / active nav) carrying dark `text-inverse`, plus
+       accent text (a20). On dark backgrounds the brand green must brighten so the dark
+       label reads and the fill stands off the surface. */
+    --color-provrb-primary-a0: oklch(66% 0.12 150);   /* button / active-nav fill */
+    --color-provrb-primary-a10: oklch(70% 0.12 150);
+    --color-provrb-primary-a20: oklch(77% 0.10 150);  /* accent text on dark surfaces */
+
+    /* State colors are PILLS (bg = a20 tint, text = a0) and icons (a10). Invert the tint
+       direction for dark: a20 → deep tint, a0 → light label, a10 stays a vivid mid. */
+    --color-provrb-success-a0: oklch(82% 0.12 151);
+    --color-provrb-success-a10: oklch(68% 0.17 151);
+    --color-provrb-success-a20: oklch(30% 0.06 157);
+
+    --color-provrb-warning-a0: oklch(86% 0.10 86);
+    --color-provrb-warning-a10: oklch(78% 0.15 80);
+    --color-provrb-warning-a20: oklch(32% 0.06 62);
+
+    --color-provrb-danger-a0: oklch(81% 0.11 22);
+    --color-provrb-danger-a10: oklch(68% 0.18 22);
+    --color-provrb-danger-a20: oklch(32% 0.08 22);
+
+    --color-provrb-info-a0: oklch(83% 0.09 240);
+    --color-provrb-info-a10: oklch(66% 0.17 264);
+    --color-provrb-info-a20: oklch(31% 0.07 265);
+
+    --color-provrb-gold-a0: oklch(72% 0.13 70);
+    --color-provrb-gold-a10: oklch(80% 0.14 78);
+    --color-provrb-gold-a20: oklch(86% 0.12 84);
+  }
+}
+
+/* ─── Dark mode — manual override ──────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --provrb-bg: oklch(14% 0.015 146);
+  --provrb-text: oklch(90% 0.012 146);
+  --provrb-surface: oklch(20% 0.02 146);
+
+  --color-provrb-surface-a0: oklch(14% 0.015 146);
+  --color-provrb-surface-a10: oklch(20% 0.02 146);
+  --color-provrb-surface-a20: oklch(27% 0.025 146);
+  --color-provrb-surface-a30: oklch(36% 0.022 146);
+  --color-provrb-surface-a40: oklch(47% 0.018 146);
+  --color-provrb-surface-a50: oklch(58% 0.014 146);
+
+  --color-provrb-text-primary: oklch(90% 0.012 146);
+  --color-provrb-text-secondary: oklch(80% 0.015 146);
+  --color-provrb-text-muted: oklch(64% 0.012 155);
+  --color-provrb-text-disabled: oklch(51% 0.006 264);
+  --color-provrb-text-inverse: oklch(13% 0.02 264);
+
+  /* Accent palettes for dark surfaces — mirrors the system-pref dark block above. */
+  --color-provrb-primary-a0: oklch(66% 0.12 150);
+  --color-provrb-primary-a10: oklch(70% 0.12 150);
+  --color-provrb-primary-a20: oklch(77% 0.10 150);
+
+  --color-provrb-success-a0: oklch(82% 0.12 151);
+  --color-provrb-success-a10: oklch(68% 0.17 151);
+  --color-provrb-success-a20: oklch(30% 0.06 157);
+
+  --color-provrb-warning-a0: oklch(86% 0.10 86);
+  --color-provrb-warning-a10: oklch(78% 0.15 80);
+  --color-provrb-warning-a20: oklch(32% 0.06 62);
+
+  --color-provrb-danger-a0: oklch(81% 0.11 22);
+  --color-provrb-danger-a10: oklch(68% 0.18 22);
+  --color-provrb-danger-a20: oklch(32% 0.08 22);
+
+  --color-provrb-info-a0: oklch(83% 0.09 240);
+  --color-provrb-info-a10: oklch(66% 0.17 264);
+  --color-provrb-info-a20: oklch(31% 0.07 265);
+
+  --color-provrb-gold-a0: oklch(72% 0.13 70);
+  --color-provrb-gold-a10: oklch(80% 0.14 78);
+  --color-provrb-gold-a20: oklch(86% 0.12 84);
+}
+
+/* ─── Light mode — manual override ─────────────────────────────────────────── */
+:root[data-theme="light"] {
+  --provrb-bg: oklch(98.5% 0.007 130);
+  --provrb-text: oklch(19% 0.042 146);
+  --provrb-surface: oklch(95% 0.019 130);
+
+  --color-provrb-surface-a0: oklch(99.5% 0.004 130);
+  --color-provrb-surface-a10: oklch(98.5% 0.007 130);
+  --color-provrb-surface-a20: oklch(95% 0.019 130);
+  --color-provrb-surface-a30: oklch(91% 0.02 107);
+  --color-provrb-surface-a40: oklch(87% 0.028 131);
+  --color-provrb-surface-a50: oklch(80% 0.034 131);
+
+  --color-provrb-text-primary: oklch(19% 0.042 146);
+  --color-provrb-text-secondary: oklch(27% 0.038 146);
+  --color-provrb-text-muted: oklch(44% 0.025 153);
+  --color-provrb-text-disabled: oklch(64% 0.012 264);
+  --color-provrb-text-inverse: oklch(98.5% 0.005 146);
+}
+
+/* ─── Global base styles ────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--provrb-bg);
+    color: var(--color-provrb-text-primary);
+    font-family: var(--font-provrb-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2 {
+    font-family: var(--font-provrb-heading);
+    letter-spacing: -0.01em;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-provrb-sans);
+  }
+
+  /* ── Utility aliases ── */
+  .bg-provrb-primary  { background-color: var(--color-provrb-primary-a10); }
+  .bg-provrb-surface  { background-color: var(--color-provrb-surface-a0); }
+  .bg-provrb-sage     { background-color: var(--color-provrb-surface-a20); }
+  .bg-provrb-dark     { background-color: var(--color-provrb-primary-a0); }
+
+  .text-provrb-primary   { color: var(--color-provrb-primary-a10); }
+  .text-provrb-muted     { color: var(--color-provrb-text-muted); }
+  .text-provrb-inverse   { color: var(--color-provrb-text-inverse); }
+  .text-provrb-on-dark   { color: var(--color-provrb-text-on-dark); }
+
+  .border-provrb { border-color: var(--color-provrb-surface-a30); }
+
+  /* ── Buttons ── */
+  .btn-gold {
+    background-color: var(--color-provrb-gold-a20);
+    /* Fixed, not --color-provrb-primary-a0: that token inverts to a light
+       fill color in dark theme, which would pair a light label against the
+       still-light gold-a20 background and go unreadable. */
+    color: var(--provrb-band-bg);
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: inline-block;
+    transition:
+      transform 160ms var(--provrb-ease-out),
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+    will-change: transform;
+  }
+
+  .btn-gold:hover {
+    background-color: var(--color-provrb-gold-a10);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(80, 58, 10, 0.14);
+  }
+
+  .btn-gold:active {
+    transform: scale(0.97);
+  }
+
+  .btn-outline-white {
+    border: 1px solid var(--provrb-overlay-pill-border);
+    /* Fixed, not --color-provrb-text-inverse: this button only ever sits on
+       the always-dark hero/contact bands, which don't themselves change
+       with the theme toggle, so its label shouldn't either. */
+    color: var(--color-provrb-text-on-dark);
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: inline-block;
+    transition:
+      transform 160ms var(--provrb-ease-out),
+      background-color 180ms ease,
+      border-color 180ms ease;
+    will-change: transform;
+  }
+
+  .btn-outline-white:hover {
+    background-color: var(--provrb-overlay-pill-bg);
+    border-color: var(--color-provrb-text-on-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-white:active {
+    transform: scale(0.97);
+  }
+
+  /* ── Icon button ── */
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--color-provrb-primary-a10);
+    transition:
+      transform 160ms var(--provrb-ease-out),
+      background-color 150ms ease,
+      color 150ms ease;
+    will-change: transform;
+  }
+
+  .btn-icon:hover {
+    background-color: var(--color-provrb-surface-a20);
+    transform: translateY(-1px);
+  }
+
+  .btn-icon:active {
+    transform: scale(0.97);
+  }
+
+  .provrb-nav-shell {
+    backdrop-filter: saturate(140%) blur(14px);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .provrb-nav-link {
+    position: relative;
+    color: var(--color-provrb-text-secondary);
+    transition:
+      color 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .provrb-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.45rem;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-provrb-gold-a10);
+    transform: scaleX(0.35);
+    transform-origin: left center;
+    opacity: 0;
+    transition:
+      transform 220ms var(--provrb-ease-out),
+      opacity 220ms ease;
+  }
+
+  .provrb-nav-link:hover,
+  .provrb-nav-link:focus-visible {
+    color: var(--color-provrb-primary-a10);
+  }
+
+  .provrb-nav-link:hover::after,
+  .provrb-nav-link:focus-visible::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .provrb-proof-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border-radius: 999px;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-provrb-text-on-dark);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .provrb-scroll-cue {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-provrb-text-on-dark);
+    opacity: 0.76;
+    transition:
+      transform 180ms var(--provrb-ease-out),
+      opacity 180ms ease;
+  }
+
+  .provrb-scroll-cue:hover,
+  .provrb-scroll-cue:focus-visible {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+
+  .provrb-media {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .provrb-media img {
+    transition:
+      transform 700ms var(--provrb-ease-out),
+      filter 450ms ease,
+      opacity 350ms ease;
+    transform: scale(1.01);
+    will-change: transform;
+  }
+
+  .provrb-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 34%, rgba(18, 31, 18, 0.12));
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  .provrb-media:hover img {
+    transform: scale(1.05);
+    filter: saturate(1.05);
+  }
+
+  .provrb-media:hover::after {
+    opacity: 1;
+  }
+
+  .provrb-card-lift {
+    transition:
+      transform 240ms var(--provrb-ease-out),
+      box-shadow 240ms ease,
+      border-color 240ms ease;
+    will-change: transform;
+  }
+
+  .provrb-card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px rgba(42, 58, 42, 0.12);
+  }
+
+  .provrb-hero-floating {
+    animation: provrb-float 7s var(--provrb-ease-in-out) infinite;
+  }
+
+  .provrb-hero-floating:nth-child(2) {
+    animation-delay: 240ms;
+  }
+
+  [data-reveal] {
+    --reveal-delay: 0ms;
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.985);
+    filter: blur(12px);
+    transition:
+      opacity 680ms var(--provrb-ease-out) var(--reveal-delay),
+      transform 680ms var(--provrb-ease-out) var(--reveal-delay),
+      filter 680ms ease var(--reveal-delay);
+    will-change: opacity, transform, filter;
+  }
+
+  [data-reveal="left"] {
+    transform: translate3d(-28px, 0, 0) scale(0.985);
+  }
+
+  [data-reveal="right"] {
+    transform: translate3d(28px, 0, 0) scale(0.985);
+  }
+
+  [data-reveal="image"] {
+    transform: translate3d(0, 30px, 0) scale(1.03);
+    filter: blur(16px);
+  }
+
+  [data-reveal="line"] {
+    transform: translate3d(0, 18px, 0);
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+
+  /* ── Layout primitives ── */
+  .provrb-container {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .provrb-eyebrow {
+    display: inline-block;
+    font-size: var(--text-provrb-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-provrb-primary-a20);
+  }
+
+  .provrb-eyebrow-on-dark {
+    color: var(--color-provrb-gold-a20);
+  }
+
+  .provrb-skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 100;
+    background: var(--color-provrb-primary-a0);
+    color: var(--color-provrb-text-inverse);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: var(--text-provrb-sm);
+    transition: top 180ms var(--provrb-ease-out);
+  }
+
+  .provrb-skip-link:focus-visible {
+    top: 1rem;
+  }
+
+  /* ── Form fields ── */
+  .provrb-field-label {
+    display: block;
+    font-size: var(--text-provrb-sm);
+    font-weight: 700;
+    color: var(--color-provrb-text-secondary);
+    margin-bottom: 0.4rem;
+  }
+
+  .provrb-input {
+    width: 100%;
+    background: var(--color-provrb-surface-a0);
+    border: 1px solid var(--color-provrb-surface-a30);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    font-size: var(--text-provrb-base);
+    font-family: var(--font-provrb-sans);
+    color: var(--color-provrb-text-primary);
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .provrb-input::placeholder {
+    color: var(--color-provrb-text-muted);
+  }
+
+  .provrb-input:hover {
+    border-color: var(--color-provrb-surface-a40);
+  }
+
+  .provrb-input:focus-visible {
+    outline: none;
+    border-color: var(--color-provrb-gold-a10);
+    box-shadow: 0 0 0 3px rgba(190, 145, 30, 0.18);
+  }
+
+  .provrb-input[aria-invalid="true"] {
+    border-color: var(--color-provrb-danger-a10);
+  }
+
+  .provrb-field-error {
+    display: block;
+    font-size: var(--text-provrb-xs);
+    color: var(--color-provrb-danger-a10);
+    margin-top: 0.35rem;
+    font-weight: 600;
+  }
+
+  /* ── Global focus ring ── */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-provrb-gold-a10);
+    outline-offset: 2px;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, .btn-gold, .btn-outline-white, .btn-icon {
+      transition-duration: 0ms !important;
+      animation-duration: 0ms !important;
+    }
+
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+}
+
+@keyframes provrb-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes provrb-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
