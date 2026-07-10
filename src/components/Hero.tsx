@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-[104px]"
+      className="relative flex min-h-dvh flex-col overflow-hidden pt-[104px]"
       style={{ background: 'var(--provrb-band-bg)' }}
     >
       {/* ambient grid texture, brand-tinted, purely decorative */}
@@ -26,7 +26,7 @@ export function Hero() {
 
       <AtmosphereTexture glow="green" />
 
-      <div className="provrb-container relative grid gap-14 py-16 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
+      <div className="provrb-container relative grid flex-1 content-center gap-14 py-16 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
         <div data-reveal="left">
           <h1
             className="mt-6 font-[var(--font-provrb-heading)] font-semibold tracking-tight"

@@ -1,3 +1,4 @@
+import { ArrowUp } from 'lucide-react'
 import { AtmosphereTexture } from './AtmosphereTexture'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -56,7 +57,16 @@ export function Footer() {
             </a>
             <ThemeToggle />
           </div>
-          <p className="text-[0.8rem] opacity-70">© {YEAR} PROVRB. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <p className="text-[0.8rem] opacity-70">© {YEAR} PROVRB. All rights reserved.</p>
+            <a
+              href="#top"
+              className="flex items-center gap-1.5 text-[0.8rem] font-semibold opacity-70 transition-opacity hover:opacity-100"
+            >
+              Back to top
+              <ArrowUp size={13} strokeWidth={2} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
